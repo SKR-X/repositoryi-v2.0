@@ -48,7 +48,7 @@ public class CameraFly : MonoBehaviour
         transfer = transform.forward * Input.GetAxis("Vertical");
         transfer += transform.right * Input.GetAxis("Horizontal");
         transform.position += transfer * speed * Time.deltaTime;
-        RestrictionCam();
+        BlockCam();
         if (Input.GetKey("escape")) { Application.Quit(); }
     }
 
@@ -60,7 +60,7 @@ public class CameraFly : MonoBehaviour
     }
 
     // Ограничение камеры
-    void RestrictionCam()
+    void BlockCam()
     {
         Vector3 cl = transform.position;
 
