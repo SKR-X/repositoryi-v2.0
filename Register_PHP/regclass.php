@@ -24,7 +24,8 @@ class Register extends SafeMySql {
         );
     }
     public function check_user(){
-        if(empty($this->getAll("SELECT * FROM $this->table WHERE username = ?s OR email = ?s",$this->in['username'],$this->in['email']))){
+        if(empty($this->getAll("SELECT * FROM $this->table WHERE username = ?s OR email = ?s",
+        $this->in['username'],$this->in['email']))){
         echo "all is ok.";
     }else{
         echo "This account already exists!";
