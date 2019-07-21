@@ -1,8 +1,9 @@
 <?php
+//https://github.com/colshrapnel/safemysql/blob/master/safemysql.class.php
 require_once "../../github/safemysql.php";
 class Register extends SafeMySql {
     //введите таблицу с пользователями
-    private $table = "users";
+    private $table = " ";
     public $done_pass;
     private $length=15;
     private $keyspace='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
