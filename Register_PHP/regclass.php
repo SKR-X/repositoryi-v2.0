@@ -1,9 +1,8 @@
 <?php
-//https://github.com/colshrapnel/safemysql/blob/master/safemysql.class.php
 require_once "../../github/safemysql.php";
 class Register extends SafeMySql {
     //введите таблицу с пользователями
-    private $table = " ";
+    private $table = "users";
     public $done_pass;
     private $length=15;
     private $keyspace='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -23,16 +22,16 @@ class Register extends SafeMySql {
             'password' => ""
         );
     }
-    public function check_user(){
-        if(empty($this->getAll("SELECT * FROM $this->table WHERE username = ?s OR email = ?s",
-        $this->in['username'],$this->in['email']))){
+    public function reg_user(){
+        if(empty($this->getAll("SELECT * FROM $this->table WHERE username = ?s OR email = ?s",$this->in['username'],$this->in['email']))){
         echo "all is ok.";
+        $this->insrt();
     }else{
         echo "This account already exists!";
         exit();
         }
     }
-    public function reg_user(){
+    private function insrt(){
         $this->in['password'] = $this->done_pass;
         if ($this->query("INSERT INTO $this->table SET ?u", $this->in)){
             echo "success!";
