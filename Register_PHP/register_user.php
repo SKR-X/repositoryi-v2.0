@@ -1,6 +1,7 @@
 <?php
 require_once 'regclass.php';
-$Reg = new Register(array('user' => 'root', 'pass' => '', 'db' => 'spec_db', 'charset' => 'utf8'));
+//set your parameters
+$Reg = new Register(array('user' => '', 'pass' => '', 'db' => '', 'charset' => ''));
 $Reg->random_str(); 
 echo "Сгенерированный пароль: ";
 echo $Reg->done_pass;
