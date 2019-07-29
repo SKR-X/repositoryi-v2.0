@@ -3,12 +3,12 @@ require_once "../../github/safemysql.php";
 class Register extends SafeMySql {
     //введите таблицу с пользователями
     private $table = "users";
-    public $done_pass;
     private $length=15;
     private $keyspace='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     private $pieces;
     private $i;
     private $max;
+    public $done_pass;
     public $in = array();
     function __construct($options = array()) {
         SafeMySql::__construct($options);
