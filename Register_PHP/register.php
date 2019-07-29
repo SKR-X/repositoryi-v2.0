@@ -22,7 +22,7 @@
 <input type="submit" name="reg" value="REGISTER" required>
 </form>
 <p>Password will be generated automatically</p>
-  </div>
+</div>
 </div>
 </body> 
 </html>
