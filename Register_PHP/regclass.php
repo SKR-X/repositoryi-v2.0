@@ -53,4 +53,4 @@ class Register extends SafeMySql
         $this->done_pass = implode('', $this->pieces);
     }
 }
-
+?>
