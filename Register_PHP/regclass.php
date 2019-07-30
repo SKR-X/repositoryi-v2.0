@@ -1,16 +1,18 @@
 <?php
 require_once "../../github/safemysql.php";
-class Register extends SafeMySql {
+class Register extends SafeMySql
+{
     //введите таблицу с пользователями
     private $table = "users";
-    private $length=15;
-    private $keyspace='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    private $length = 15;
+    private $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     private $pieces;
     private $i;
     private $max;
     public $done_pass;
     public $in = array();
-    function __construct($options = array()) {
+    function __construct($options = array())
+    {
         SafeMySql::__construct($options);
         $this->in = array(
             'username' => $_POST['username'],
@@ -22,30 +24,33 @@ class Register extends SafeMySql {
             'password' => ""
         );
     }
-    public function reg_user(){
-        if(empty($this->getAll("SELECT * FROM $this->table WHERE username = ?s OR email = ?s",$this->in['username'],$this->in['email']))){
-        echo "all is ok.";
-        $this->insrt();
-    }else{
-        echo "This account already exists!";
-        exit();
+    public function reg_user()
+    {
+        if (empty($this->getAll("SELECT * FROM $this->table WHERE username = ?s OR email = ?s", $this->in['username'], $this->in['email']))) {
+            echo "all is ok.";
+            $this->insrt();
+        } else {
+            echo "This account already exists!";
+            exit();
         }
     }
-    private function insrt(){
+    private function insrt()
+    {
         $this->in['password'] = $this->done_pass;
-        if ($this->query("INSERT INTO $this->table SET ?u", $this->in)){
+        if ($this->query("INSERT INTO $this->table SET ?u", $this->in)) {
             echo "success!";
-          } else {
+        } else {
             echo "error, could not insert to db!";
-          }  
+        }
     }
-    public function random_str(){
+    public function random_str()
+    {
         $this->pieces = [];
         $this->max = mb_strlen($this->keyspace, '8bit') - 1;
-        for ($this->i = 0; $this->i < $this->length; $this->i=$this->i+1) {
-            $this->pieces []= $this->keyspace[random_int(0, $this->max)];
+        for ($this->i = 0; $this->i < $this->length; $this->i = $this->i + 1) {
+            $this->pieces[] = $this->keyspace[random_int(0, $this->max)];
         }
         $this->done_pass = implode('', $this->pieces);
     }
-}   
-?>
+}
+
