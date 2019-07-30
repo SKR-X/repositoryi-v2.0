@@ -39,8 +39,7 @@ class Register extends SafeMySql {
             echo "error, could not insert to db!";
           }  
     }
-    public function random_str()
-    {
+    public function random_str(){
         $this->pieces = [];
         $this->max = mb_strlen($this->keyspace, '8bit') - 1;
         for ($this->i = 0; $this->i < $this->length; $this->i=$this->i+1) {
