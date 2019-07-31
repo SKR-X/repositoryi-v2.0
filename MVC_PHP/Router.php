@@ -49,15 +49,15 @@ class Router
 
                 self::$action = 'action' . ucfirst(array_shift(self::$parts));
 
-                //Выбираем наш контроллер
-
+                //Выбираем наш контроллер (укажите свой путь)
+            
                 self::$dir = ROOT . '/controllers/' . self::$controller . '.php';
 
                 if (file_exists(self::$dir)) {
                     include_once(self::$dir);
                     $method = self::$action;
                     $contr = new self::$controller;
-                    if($contr->$method()){
+                    if($contr->$method()) {
                         break;
                     }
                 }
