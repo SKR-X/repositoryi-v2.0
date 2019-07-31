@@ -1,5 +1,7 @@
 <?php
 
+//Тестовый контроллер
+
 class NewsController
 {
     public function actionIndex(){
