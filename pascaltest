@@ -1,0 +1,30 @@
+var s,i:string;
+var n,q,res,cnt,cnt2:integer;
+begin
+  i:='';
+  s:='111';
+  while cnt2<>1000 do begin
+    cnt2+=1;
+    i+='1';
+    s+=i;
+    while pos('111',s)<>0 do begin
+      if pos('111',s)<>0 then begin
+        q:=pos('111',s);
+        delete(s,q,3);
+        insert('33',s,q);
+      end
+      else if pos('333',s)<>0 then begin
+        q:=pos('333',s);
+        delete(s,q,3);
+        insert('1',s,q);
+      end;
+    end;
+//    if (length(s)>5) and (length(s)<10) then begin
+//    writeln(s);
+//    end;
+    if s='131' then cnt+=1;
+    s+=1;
+    s:='111';
+  end;
+  writeln(cnt);
+end.
